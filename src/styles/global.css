@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-spn-dark: #3d4022;
+  --color-spn-gold: #ce8938;
+  --color-spn-cream: #e1cca5;
+  --color-spn-rust: #a24b25;
+
+  --font-display: "Impact", "Oswald", sans-serif;
+  --font-body: "Roboto Condensed", sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-spn-cream);
+  color: var(--color-spn-dark);
+}
