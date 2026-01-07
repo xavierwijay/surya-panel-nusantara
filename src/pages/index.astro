@@ -16,9 +16,9 @@ import "../styles/global.css";
 	</head>
 	<body class="antialiased">
 		
-		{/* Navbar */}
-		<nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 transition-all duration-300">
-			<div class="flex items-center gap-2 md:gap-8 px-6 py-3 rounded-full border border-white/30 text-white text-sm md:text-base font-bold tracking-wider uppercase backdrop-blur-md bg-spn-dark/40 shadow-lg hover:bg-spn-dark/60 transition-all duration-300">
+		{/* Desktop Navbar */}
+		<nav class="hidden md:flex fixed top-0 left-0 right-0 z-50 justify-center pt-6 transition-all duration-300">
+			<div class="flex items-center gap-8 px-6 py-3 rounded-full border border-white/30 text-white text-base font-bold tracking-wider uppercase backdrop-blur-md bg-spn-dark/40 shadow-lg hover:bg-spn-dark/60 transition-all duration-300">
 				<a href="#home" class="hover:text-spn-gold transition-colors px-2 py-1">Home</a>
 				<a href="#services" class="hover:text-spn-gold transition-colors px-2 py-1">Services</a>
 				<a href="#projects" class="hover:text-spn-gold transition-colors px-2 py-1">Projects</a>
@@ -26,6 +26,24 @@ import "../styles/global.css";
 				<a href="#contact" class="hover:text-spn-gold transition-colors px-2 py-1">Contact</a>
 			</div>
 		</nav>
+
+		{/* Mobile Menu Button */}
+		<button id="mobile-menu-btn" class="md:hidden fixed top-6 right-6 z-50 w-12 h-12 bg-spn-dark/80 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white shadow-lg cursor-pointer hover:bg-spn-dark transition-colors" aria-label="Toggle Menu">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+			</svg>
+		</button>
+
+		{/* Mobile Menu Overlay */}
+		<div id="mobile-menu" class="fixed inset-0 z-40 bg-spn-dark/95 backdrop-blur-xl flex flex-col items-center justify-center translate-x-full transition-transform duration-300 md:hidden">
+			<div class="flex flex-col gap-8 text-2xl font-bold tracking-wider uppercase text-white text-center">
+				<a href="#home" class="mobile-link hover:text-spn-gold transition-colors">Home</a>
+				<a href="#services" class="mobile-link hover:text-spn-gold transition-colors">Services</a>
+				<a href="#projects" class="mobile-link hover:text-spn-gold transition-colors">Projects</a>
+				<a href="#faq" class="mobile-link hover:text-spn-gold transition-colors">FAQ</a>
+				<a href="#contact" class="mobile-link hover:text-spn-gold transition-colors">Contact</a>
+			</div>
+		</div>
 
 		{/* Hero Section */}
 		<section id="home" class="relative w-full h-screen overflow-hidden">
@@ -304,5 +322,37 @@ import "../styles/global.css";
 				&copy; {new Date().getFullYear()} Surya Panel Nusantara. All rights reserved.
 			</div>
 		</footer>
+		<script>
+			const btn = document.getElementById('mobile-menu-btn');
+			const menu = document.getElementById('mobile-menu');
+			const links = document.querySelectorAll('.mobile-link');
+			let isOpen = false;
+
+			if (btn && menu) {
+				btn.addEventListener('click', () => {
+					isOpen = !isOpen;
+					if (isOpen) {
+						menu.classList.remove('translate-x-full');
+						// Change icon to X
+						btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>`;
+						document.body.style.overflow = 'hidden'; // Prevent scrolling
+					} else {
+						menu.classList.add('translate-x-full');
+						// Change icon back to hamburger
+						btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>`;
+						document.body.style.overflow = 'auto'; // Re-enable scrolling
+					}
+				});
+
+				links.forEach(link => {
+					link.addEventListener('click', () => {
+						isOpen = false;
+						menu.classList.add('translate-x-full');
+						btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>`;
+						document.body.style.overflow = 'auto';
+					});
+				});
+			}
+		</script>
 	</body>
 </html>
