@@ -36,6 +36,11 @@ import "../styles/global.css";
 
 		{/* Mobile Menu Overlay */}
 		<div id="mobile-menu" class="fixed inset-0 z-40 bg-spn-dark/95 backdrop-blur-xl flex flex-col items-center justify-center translate-x-full transition-transform duration-300 md:hidden">
+			<div class="mb-12 flex flex-col items-center gap-4 animate-fade-in">
+				<img src="/logo.png" alt="Surya Nusantara" class="w-20 h-auto drop-shadow-md" />
+				<span class="font-display text-3xl text-white uppercase tracking-wider text-center drop-shadow-md">Surya Nusantara</span>
+			</div>
+			
 			<div class="flex flex-col gap-8 text-2xl font-bold tracking-wider uppercase text-white text-center">
 				<a href="#home" class="mobile-link hover:text-spn-gold transition-colors">Home</a>
 				<a href="#services" class="mobile-link hover:text-spn-gold transition-colors">Services</a>
@@ -57,7 +62,18 @@ import "../styles/global.css";
 			</div>
 
 			<div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
-				<div class="animate-fade-in-up">
+				<div class="animate-fade-in-up flex flex-col items-center">
+					<div class="mb-10 flex flex-col items-center gap-5">
+						<img 
+							src="/logo.png" 
+							alt="Surya Nusantara Logo" 
+							class="w-24 md:w-32 h-auto drop-shadow-2xl filter brightness-110 hover:scale-105 transition-transform duration-700 ease-out" 
+						/>
+						<span class="font-display text-xl md:text-2xl tracking-[0.4em] text-spn-cream uppercase drop-shadow-lg border-b border-transparent hover:border-spn-gold transition-colors duration-300 pb-1">
+							Surya Nusantara
+						</span>
+					</div>
+
 					<h1 class="text-7xl md:text-9xl uppercase tracking-tighter mb-2 font-display text-white drop-shadow-lg">
 						Powered By Nature
 					</h1>
