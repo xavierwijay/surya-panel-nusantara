@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "aos/dist/aos.css";
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -68,7 +69,7 @@ import "../styles/global.css";
 
 			<div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 md:pb-0">
 				<div class="animate-fade-in-up flex flex-col items-center">
-					<div class="mb-10 flex flex-col items-center gap-5 md:hidden">
+					<div class="mb-10 flex flex-col items-center gap-5 md:hidden" data-aos="zoom-in" data-aos-duration="1000">
 						<img 
 							src="/LOGOSURYANUSANTARAPOTRAIT.png" 
 							alt="Surya Nusantara Logo" 
@@ -76,15 +77,15 @@ import "../styles/global.css";
 						/>
 					</div>
 
-					<h1 class="text-7xl md:text-9xl uppercase tracking-tighter mb-2 font-display text-white drop-shadow-lg">
+					<h1 class="text-7xl md:text-9xl uppercase tracking-tighter mb-2 font-display text-white drop-shadow-lg" data-aos="fade-up" data-aos-delay="100">
 						Powered By Nature
 					</h1>
-					<div class="h-1 w-32 bg-spn-gold mx-auto mb-6 rounded-full"></div>
-					<p class="text-2xl md:text-4xl font-light tracking-wide opacity-95 drop-shadow-md">
+					<div class="h-1 w-32 bg-spn-gold mx-auto mb-6 rounded-full" data-aos="fade-up" data-aos-delay="200"></div>
+					<p class="text-2xl md:text-4xl font-light tracking-wide opacity-95 drop-shadow-md" data-aos="fade-up" data-aos-delay="300">
 						We Build Sustainable Power
 					</p>
 					
-					<div class="mt-12">
+					<div class="mt-12" data-aos="fade-up" data-aos-delay="400">
 						<a href="#contact" class="bg-spn-rust hover:bg-spn-gold text-white px-8 py-3 rounded-none font-bold text-lg tracking-widest uppercase transition-colors duration-300 inline-block border-2 border-transparent hover:border-white/20">
 							Get A Quote
 						</a>
@@ -104,7 +105,7 @@ import "../styles/global.css";
 		{/* About Section */}
 		<section id="about" class="py-24 bg-spn-cream px-6 md:px-12">
 			<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-				<div class="relative">
+				<div class="relative" data-aos="fade-right">
 					<div class="absolute -top-4 -left-4 w-full h-full border-2 border-spn-gold rounded-sm z-0"></div>
 					<img 
 						src="https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?q=80&w=2070&auto=format&fit=crop" 
@@ -112,7 +113,7 @@ import "../styles/global.css";
 						class="relative z-10 w-full h-auto shadow-xl rounded-sm grayscale hover:grayscale-0 transition-all duration-700"
 					/>
 				</div>
-				<div class="text-spn-dark">
+				<div class="text-spn-dark" data-aos="fade-left">
 					<h2 class="text-spn-rust text-lg font-bold uppercase tracking-widest mb-2">Who We Are</h2>
 					<h3 class="font-display text-5xl md:text-6xl mb-6 leading-tight">THE FUTURE OF ENERGY IS HERE</h3>
 					<p class="text-xl leading-relaxed mb-6 font-light">
@@ -131,14 +132,14 @@ import "../styles/global.css";
 		{/* Services Section */}
 		<section id="services" class="py-24 bg-white px-6 md:px-12">
 			<div class="max-w-7xl mx-auto">
-				<div class="text-center mb-16">
+				<div class="text-center mb-16" data-aos="fade-up">
 					<h2 class="text-spn-gold text-lg font-bold uppercase tracking-widest mb-2">Our Solutions</h2>
 					<h3 class="font-display text-spn-dark text-5xl md:text-6xl uppercase">What We Offer</h3>
 				</div>
 
 				<div class="grid md:grid-cols-3 gap-8">
 					{/* Service 1 */}
-					<div class="bg-spn-cream/30 p-8 border border-spn-cream hover:border-spn-gold/50 transition-all duration-300 group hover:shadow-lg">
+					<div class="bg-spn-cream/30 p-8 border border-spn-cream hover:border-spn-gold/50 transition-all duration-300 group hover:shadow-lg" data-aos="fade-up" data-aos-delay="0">
 						<div class="w-16 h-16 bg-spn-dark text-spn-gold flex items-center justify-center mb-6 group-hover:bg-spn-gold group-hover:text-white transition-colors duration-300">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -149,7 +150,7 @@ import "../styles/global.css";
 					</div>
 
 					{/* Service 2 */}
-					<div class="bg-spn-cream/30 p-8 border border-spn-cream hover:border-spn-gold/50 transition-all duration-300 group hover:shadow-lg">
+					<div class="bg-spn-cream/30 p-8 border border-spn-cream hover:border-spn-gold/50 transition-all duration-300 group hover:shadow-lg" data-aos="fade-up" data-aos-delay="100">
 						<div class="w-16 h-16 bg-spn-dark text-spn-gold flex items-center justify-center mb-6 group-hover:bg-spn-gold group-hover:text-white transition-colors duration-300">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6h1.5m-1.5 3h1.5m-1.5 3h1.5M6.75 21v-18M17.25 21v-18" />
@@ -160,7 +161,7 @@ import "../styles/global.css";
 					</div>
 
 					{/* Service 3 */}
-					<div class="bg-spn-cream/30 p-8 border border-spn-cream hover:border-spn-gold/50 transition-all duration-300 group hover:shadow-lg">
+					<div class="bg-spn-cream/30 p-8 border border-spn-cream hover:border-spn-gold/50 transition-all duration-300 group hover:shadow-lg" data-aos="fade-up" data-aos-delay="200">
 						<div class="w-16 h-16 bg-spn-dark text-spn-gold flex items-center justify-center mb-6 group-hover:bg-spn-gold group-hover:text-white transition-colors duration-300">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m3.12 3.12l-2.26 2.26" />
@@ -176,19 +177,19 @@ import "../styles/global.css";
 		{/* Stats Section */}
 		<section class="py-16 bg-spn-rust text-white">
 			<div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-				<div>
+				<div data-aos="fade-up" data-aos-delay="0">
 					<div class="font-display text-5xl md:text-6xl mb-2">500+</div>
 					<div class="text-sm md:text-base uppercase tracking-wider opacity-80">Projects Completed</div>
 				</div>
-				<div>
+				<div data-aos="fade-up" data-aos-delay="100">
 					<div class="font-display text-5xl md:text-6xl mb-2">12k</div>
 					<div class="text-sm md:text-base uppercase tracking-wider opacity-80">Panels Installed</div>
 				</div>
-				<div>
+				<div data-aos="fade-up" data-aos-delay="200">
 					<div class="font-display text-5xl md:text-6xl mb-2">5MW</div>
 					<div class="text-sm md:text-base uppercase tracking-wider opacity-80">Energy Generated</div>
 				</div>
-				<div>
+				<div data-aos="fade-up" data-aos-delay="300">
 					<div class="font-display text-5xl md:text-6xl mb-2">100%</div>
 					<div class="text-sm md:text-base uppercase tracking-wider opacity-80">Customer Satisfaction</div>
 				</div>
@@ -198,7 +199,7 @@ import "../styles/global.css";
 		{/* Projects Section */}
 		<section id="projects" class="py-24 bg-spn-dark text-white px-6 md:px-12">
 			<div class="max-w-7xl mx-auto">
-				<div class="flex flex-col md:flex-row justify-between items-end mb-16">
+				<div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
 					<div>
 						<h2 class="text-spn-gold text-lg font-bold uppercase tracking-widest mb-2">Our Portfolio</h2>
 						<h3 class="font-display text-white text-5xl md:text-6xl uppercase">Featured Projects</h3>
@@ -209,7 +210,7 @@ import "../styles/global.css";
 				</div>
 
 				<div class="grid md:grid-cols-2 gap-8">
-					<div class="group relative overflow-hidden cursor-pointer">
+					<div class="group relative overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="0">
 						<img 
 							src="https://images.unsplash.com/photo-1548337138-e87d889cc369?q=80&w=2000&auto=format&fit=crop" 
 							alt="Project 1" 
@@ -220,7 +221,7 @@ import "../styles/global.css";
 							<h3 class="font-display text-3xl text-white">Green Villa Residence</h3>
 						</div>
 					</div>
-					<div class="group relative overflow-hidden cursor-pointer md:mt-16">
+					<div class="group relative overflow-hidden cursor-pointer md:mt-16" data-aos="fade-up" data-aos-delay="100">
 						<img 
 							src="https://images.unsplash.com/photo-1594818379496-da1e345b0ded?q=80&w=2000&auto=format&fit=crop" 
 							alt="Project 2" 
@@ -238,12 +239,12 @@ import "../styles/global.css";
 		{/* FAQ Section */}
 		<section id="faq" class="py-24 bg-spn-cream px-6 md:px-12">
 			<div class="max-w-4xl mx-auto">
-				<div class="text-center mb-16">
+				<div class="text-center mb-16" data-aos="fade-up">
 					<h2 class="text-spn-rust text-lg font-bold uppercase tracking-widest mb-2">Common Questions</h2>
 					<h3 class="font-display text-spn-dark text-5xl md:text-6xl uppercase">FAQ</h3>
 				</div>
 
-				<div class="space-y-6">
+				<div class="space-y-6" data-aos="fade-up" data-aos-delay="200">
 					{/* Q1 */}
 					<details class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/50 open:ring-1 open:ring-spn-gold/50">
 						<summary class="flex justify-between items-center font-bold text-xl cursor-pointer list-none text-spn-dark p-8 hover:bg-white/50 transition-colors">
@@ -289,7 +290,7 @@ import "../styles/global.css";
 		{/* Contact/Footer Section */}
 		<footer id="contact" class="bg-spn-dark text-white pt-24 pb-12 px-6 border-t-[10px] border-spn-gold">
 			<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-16">
-				<div>
+				<div data-aos="fade-up" data-aos-delay="0">
 					<h3 class="font-display text-4xl mb-6 uppercase">Surya Panel Nusantara</h3>
 					<p class="text-spn-cream/80 leading-relaxed mb-6">
 						Building a sustainable future through renewable energy solutions. Verified quality, professional service.
@@ -301,7 +302,7 @@ import "../styles/global.css";
 					</div>
 				</div>
 				
-				<div>
+				<div data-aos="fade-up" data-aos-delay="100">
 					<h3 class="font-display text-2xl mb-6 uppercase tracking-wider text-spn-gold">Contact Us</h3>
 					<ul class="space-y-4 text-spn-cream/80">
 						<li class="flex items-start gap-4">
@@ -326,7 +327,7 @@ import "../styles/global.css";
 					</ul>
 				</div>
 
-				<div>
+				<div data-aos="fade-up" data-aos-delay="200">
 					<h3 class="font-display text-2xl mb-6 uppercase tracking-wider text-spn-gold">Inquiry</h3>
 					<form class="space-y-4">
 						<input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-spn-gold transition-colors" />
@@ -341,6 +342,14 @@ import "../styles/global.css";
 			</div>
 		</footer>
 		<script>
+			import AOS from "aos";
+			AOS.init({
+				duration: 800,
+				easing: 'ease-out-cubic',
+				once: true,
+				offset: 50
+			});
+
 			const btn = document.getElementById('mobile-menu-btn');
 			const menu = document.getElementById('mobile-menu');
 			const links = document.querySelectorAll('.mobile-link');
