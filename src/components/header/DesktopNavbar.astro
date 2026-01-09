@@ -1,0 +1,19 @@
+---
+import { NAV_LINKS } from "../../data/site";
+---
+
+<nav
+  id="desktop-navbar"
+  class="hidden md:flex fixed top-0 left-0 right-0 z-50 justify-center pt-6 transition-transform duration-700 ease-in-out"
+  aria-label="Primary"
+>
+  <div
+    class="flex items-center gap-8 px-6 py-3 rounded-full border border-white/30 text-white text-base font-bold tracking-wider uppercase backdrop-blur-md bg-spn-dark/40 shadow-lg hover:bg-spn-dark/60 transition-all duration-300"
+  >
+    {NAV_LINKS.map((l) => (
+      <a href={l.href} class="hover:text-spn-gold transition-colors px-2 py-1">
+        {l.label}
+      </a>
+    ))}
+  </div>
+</nav>

@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+import "aos/dist/aos.css";
+import { SITE, ASSETS } from "../data/site";
+
+import siteScriptUrl from "../scripts/site.ts?url";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { title = SITE.title, description = SITE.description } = Astro.props;
+---
+
+<html lang={SITE.lang} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={ASSETS.favicon} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Basic Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="antialiased">
+    <slot />
+
+    <!-- Site JS (AOS + menu + counters + scroll navbar) -->
+    <script type="module" src={siteScriptUrl}></script>
+  </body>
+</html>
