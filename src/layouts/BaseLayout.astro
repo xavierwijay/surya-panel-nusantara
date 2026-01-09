@@ -3,8 +3,6 @@ import "../styles/global.css";
 import "aos/dist/aos.css";
 import { SITE, ASSETS } from "../data/site";
 
-import siteScriptUrl from "../scripts/site.ts?url";
-
 type Props = {
   title?: string;
   description?: string;
@@ -45,6 +43,6 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
     <slot />
 
     <!-- Site JS (AOS + menu + counters + scroll navbar) -->
-    <script type="module" src={siteScriptUrl}></script>
+    <script src="../scripts/site.ts"></script>
   </body>
 </html>
