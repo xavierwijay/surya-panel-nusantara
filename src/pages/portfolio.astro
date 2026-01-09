@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrandLogo from "../components/header/BrandLogo.astro";
+import DesktopNavbar from "../components/header/DesktopNavbar.astro";
+import MobileMenu from "../components/header/MobileMenu.astro";
+import FloatingSocial from "../components/header/FloatingSocial.astro";
+import Footer from "../components/sections/Footer.astro";
+import { PROJECTS } from "../data/portfolio";
+
+const title = "Portfolio - Surya Panel Nusantara";
+const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi panel surya berkualitas untuk rumah, bisnis, dan industri.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Header layer -->
+  <BrandLogo />
+  <DesktopNavbar />
+  <MobileMenu />
+
+  <main class="bg-[#3e4a30] min-h-screen text-white pt-32 pb-20">
+    
+    <!-- Header Title -->
+    <div class="text-center mb-16 px-6" data-aos="fade-down">
+        <h2 class="text-white/90 text-sm md:text-base font-medium tracking-widest uppercase mb-2 font-display">
+            SURYA NUSANTARA
+        </h2>
+        <h1 class="text-4xl md:text-6xl font-bold uppercase tracking-wide font-display text-white">
+            BEST FEATURED PROJECTS
+        </h1>
+    </div>
+
+    <!-- Projects List -->
+    <div class="max-w-6xl mx-auto px-6 flex flex-col gap-12">
+      {PROJECTS.map((project, index) => (
+        <div class="relative group w-full h-[300px] md:h-[500px] overflow-hidden rounded-sm shadow-xl" data-aos="fade-up" data-aos-delay={index * 100}>
+            <!-- Image -->
+            <img 
+                src={project.image} 
+                alt={`${project.title} - ${project.location}`}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+
+            <!-- Text Content (Centered) -->
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h3 class="text-2xl md:text-4xl font-bold text-white uppercase tracking-wider drop-shadow-lg text-center px-4 font-display">
+                    {project.title} - {project.location}
+                </h3>
+            </div>
+        </div>
+      ))}
+    </div>
+
+  </main>
+
+  <Footer />
+
+  <!-- Floating UI -->
+  <FloatingSocial />
+</BaseLayout>
