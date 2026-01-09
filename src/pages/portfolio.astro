@@ -30,24 +30,58 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
     </div>
 
     <!-- Projects List -->
-    <div class="max-w-6xl mx-auto px-6 flex flex-col gap-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col gap-12 pb-24">
       {PROJECTS.map((project, index) => (
-        <div class="relative group w-full h-[300px] md:h-[500px] overflow-hidden rounded-sm shadow-xl" data-aos="fade-up" data-aos-delay={index * 100}>
+        <div 
+          class="relative group w-full h-[300px] md:h-[500px] overflow-hidden rounded-sm shadow-xl cursor-pointer isolate" 
+          data-aos="fade-up" 
+          data-aos-delay={index * 100}
+          tabindex="0"
+        >
             <!-- Image -->
             <img 
                 src={project.image} 
                 alt={`${project.title} - ${project.location}`}
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:blur-sm group-focus:scale-110 group-focus:blur-sm"
             />
             
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-
-            <!-- Text Content (Centered) -->
-            <div class="absolute inset-0 flex items-center justify-center">
-                <h3 class="text-2xl md:text-4xl font-bold text-white uppercase tracking-wider drop-shadow-lg text-center px-4 font-display">
+            <!-- Default Overlay (Title) -->
+            <div class="absolute inset-0 bg-black/20 group-hover:opacity-0 group-focus:opacity-0 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                 <h3 class="text-2xl md:text-5xl font-bold text-white uppercase tracking-wider drop-shadow-xl text-center px-4 font-display">
                     {project.title} - {project.location}
                 </h3>
+            </div>
+
+            <!-- Detail Overlay (Hover/Focus) -->
+            <div class="absolute inset-0 bg-spn-dark/80 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center px-8 z-10">
+                 <div class="transform translate-y-8 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 delay-75">
+                    <span class="text-spn-gold text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Project Details</span>
+                    <h3 class="text-3xl md:text-5xl font-bold text-white uppercase tracking-wide font-display mb-2">
+                        {project.title}
+                    </h3>
+                    <p class="text-spn-rust font-bold text-lg mb-6">{project.location}</p>
+                 </div>
+                 
+                 <div class="w-16 h-1 bg-spn-gold mb-8 transform scale-x-0 group-hover:scale-x-100 group-focus:scale-x-100 transition-transform duration-500 delay-150"></div>
+
+                 <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4 text-left max-w-2xl transform translate-y-8 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 delay-200">
+                    <div>
+                        <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Type</p>
+                        <p class="text-white font-medium">{project.type || "Solar Installation"}</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Capacity</p>
+                        <p class="text-white font-medium">{project.capacity || "N/A"}</p>
+                    </div>
+                     <div>
+                        <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Year</p>
+                        <p class="text-white font-medium">{project.year || "2024"}</p>
+                    </div>
+                 </div>
+                 
+                 <p class="mt-8 text-gray-300 max-w-lg leading-relaxed text-sm md:text-base transform translate-y-8 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 delay-300">
+                    {project.description}
+                 </p>
             </div>
         </div>
       ))}
