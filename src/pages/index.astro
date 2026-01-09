@@ -288,17 +288,23 @@ import "aos/dist/aos.css";
 		</section>
 
 		{/* Contact/Footer Section */}
-		<footer id="contact" class="bg-spn-dark text-white pt-24 pb-12 px-6 border-t-[10px] border-spn-gold">
-			<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-16">
+		<footer id="contact" class="bg-spn-dark text-white py-10 px-6 border-t-[10px] border-spn-gold">
+			<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-8">
 				<div data-aos="fade-up" data-aos-delay="0">
-					<h3 class="font-display text-4xl mb-6 uppercase">Surya Panel Nusantara</h3>
+					<img src="/logosuryanusantara.png" alt="Surya Panel Nusantara" class="w-64 h-auto mb-6" />
 					<p class="text-spn-cream/80 leading-relaxed mb-6">
 						Building a sustainable future through renewable energy solutions. Verified quality, professional service.
 					</p>
 					<div class="flex gap-4">
-						<a href="#" class="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-spn-gold transition-colors text-white">IG</a>
-						<a href="#" class="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-spn-gold transition-colors text-white">FB</a>
-						<a href="#" class="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-spn-gold transition-colors text-white">LN</a>
+						<a href="#" class="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-spn-gold transition-colors rounded-lg group">
+							<img src="/iconsocmed/instagram.png" alt="Instagram" class="w-6 h-6 object-contain filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all" />
+						</a>
+						<a href="#" class="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-spn-gold transition-colors rounded-lg group">
+							<img src="/iconsocmed/tiktok.png" alt="TikTok" class="w-6 h-6 object-contain filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all" />
+						</a>
+						<a href="#" class="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-spn-gold transition-colors rounded-lg group">
+							<img src="/iconsocmed/whatsapp.png" alt="WhatsApp" class="w-6 h-6 object-contain filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all" />
+						</a>
 					</div>
 				</div>
 				
@@ -325,6 +331,17 @@ import "aos/dist/aos.css";
 							<span>hello@suryapanelnusantara.com</span>
 						</li>
 					</ul>
+					
+					{/* Embed Map for Desktop - Compact */}
+					<div class="hidden md:block mt-6 w-full h-28 rounded-lg overflow-hidden border border-white/10 grayscale hover:grayscale-0 transition-all duration-500 relative bg-white/5">
+						<iframe 
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15819.74239857962!2d110.822606!3d-7.567086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a16627681c951%3A0x4027a76e352f500!2sSolo%2C%20Surakarta%20City%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid" 
+							class="absolute inset-0 w-full h-full border-0"
+							allowfullscreen="" 
+							loading="lazy" 
+							referrerpolicy="no-referrer-when-downgrade">
+						</iframe>
+					</div>
 				</div>
 
 				<div data-aos="fade-up" data-aos-delay="200">
