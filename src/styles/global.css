@@ -6,8 +6,8 @@
   --color-spn-cream: #e1cca5;
   --color-spn-rust: #a24b25;
 
-  --font-display: "Impact", "Oswald", sans-serif;
-  --font-body: "Roboto Condensed", sans-serif;
+  --font-display: "Impact";
+  --font-body: "Roboto Condensed";
 }
 
 body {
