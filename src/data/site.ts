@@ -16,12 +16,12 @@ export const SITE = {
 };
 
 export const NAV_LINKS = [
-  { label: "Home", href: "/#home" },
-  { label: "About Us", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Projects", href: "/#projects" },
+  { label: "Beranda", href: "/#home" },
+  { label: "Tentang Kami", href: "/#about" },
+  { label: "Layanan", href: "/#services" },
+  { label: "Proyek", href: "/#projects" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Kontak", href: "/#contact" },
 ];
 
 export const ASSETS = {
