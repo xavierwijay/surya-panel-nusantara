@@ -3,7 +3,7 @@ export const SITE = {
   title: "Surya Panel Nusantara",
   description:
     "Surya Panel Nusantara menyediakan solusi energi surya untuk rumah dan bisnis. Instalasi profesional, efisien, dan berkualitas.",
-  lang: "en",
+  lang: "id",
   phoneDisplay: "+62 812 3456 7890",
   email: "hello@suryapanelnusantara.com",
   address: "Jl. Surya Kencana No. 88, Solo, Jawa Tengah, Indonesia",
