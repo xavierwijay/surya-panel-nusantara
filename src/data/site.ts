@@ -8,7 +8,7 @@ export const SITE = {
   email: "hello@suryapanelnusantara.com",
   address: "Jl. Surya Kencana No. 88, Solo, Jawa Tengah, Indonesia",
   whatsappUrl:
-    "https://wa.me/6287729388529?text=Halo%20Surya%20Panel%20Nusantara%2C%20saya%20ingin%20berkonsultasi%20mengenai%20pemasangan%20panel%20surya.%20Mohon%20informasi%20lebih%20lanjut.",
+    "https://wa.me/6282157582002?text=Halo%20Surya%20Panel%20Nusantara%2C%20saya%20ingin%20berkonsultasi%20mengenai%20pemasangan%20panel%20surya.%20Mohon%20informasi%20lebih%20lanjut.",
   instagramUrl: "https://www.instagram.com/surya__nusantara/",
   tiktokUrl: "#",
   mapEmbedUrl:
