@@ -62,6 +62,22 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
                         ))}
                     </div>
                 )}
+                
+                <!-- Desktop Navigation Arrows -->
+                {(project.images && project.images.length > 1) && (
+                    <>
+                        <button class="nav-arrow prev-btn hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-sm transition-all duration-300 group-[.active]:opacity-0 hover:scale-110 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                        </button>
+                        <button class="nav-arrow next-btn hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-sm transition-all duration-300 group-[.active]:opacity-0 hover:scale-110 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                    </>
+                )}
             </div>
             
             <!-- Default Overlay (Title) -->
@@ -107,7 +123,6 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
     </div>
 
     <script is:inline>
-
         let carouselIntervals = [];
 
         // Use inline script to handle interactivity directly
@@ -132,41 +147,85 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
             const cards = document.querySelectorAll('.project-card');
             
             cards.forEach((card, index) => {
-                // Click interaction
+                // Click interaction (Toggles Details)
                 card.addEventListener('click', (e) => {
-                    // Check if click was a swipe (drag interaction) in carousel
-                    // Simple heuristic: if we are scrolling, don't toggle. 
-                    // But 'click' event usually fires only on clean release.
-                    
                     // Toggle 'active' class
                     const wasActive = card.classList.contains('active');
                     
                     // Close all others
                     cards.forEach(c => c.classList.remove('active'));
                     
+                    // Only open if it wasn't already active
                     if (!wasActive) {
                         card.classList.add('active');
                     } else {
-                        card.classList.remove('active');
+                         card.classList.remove('active');
                     }
                 });
 
                 // Carousel Logic
                 const carousel = card.querySelector('.overflow-x-auto');
-                if (carousel) {
-                   // Scroll spy for dots
-                   carousel.addEventListener('scroll', () => {
-                       const index = Math.round(carousel.scrollLeft / carousel.clientWidth);
-                       // Update dots logic could go here if we want dynamic active dots
-                   });
+                const carouselContainer = card.querySelector('.carousel-container');
 
-                   // Auto-scroll
+                if (carousel && carouselContainer) {
+                   // --- Arrow Navigation Logic ---
+                   const prevBtn = card.querySelector('.prev-btn');
+                   const nextBtn = card.querySelector('.next-btn');
+                   
+                   const scrollCarousel = (direction) => {
+                       const width = carousel.clientWidth;
+                       const currentScroll = carousel.scrollLeft;
+                       // Determine target
+                       let nextScroll;
+                       if (direction === 'next') {
+                            nextScroll = currentScroll + width;
+                            // Reset to 0 if at end?
+                            if (nextScroll >= carousel.scrollWidth - 10) nextScroll = 0;
+                       } else {
+                            nextScroll = currentScroll - width;
+                            // Loop to end if at start?
+                            if (nextScroll < 0) nextScroll = carousel.scrollWidth - width;
+                       }
+                       
+                       carousel.scrollTo({
+                           left: nextScroll,
+                           behavior: 'smooth'
+                       });
+                   };
+
+                   if (prevBtn) {
+                       prevBtn.addEventListener('click', (e) => {
+                           e.stopPropagation(); // Don't trigger card detail click
+                           e.preventDefault();
+                           scrollCarousel('prev');
+                           // Optional: reset interval?
+                       });
+                   }
+
+                   if (nextBtn) {
+                        nextBtn.addEventListener('click', (e) => {
+                           e.stopPropagation();
+                           e.preventDefault();
+                           scrollCarousel('next');
+                       });
+                   }
+
+                   // --- Auto-scroll Logic ---
                    // Randomize start delay slightly to avoid all moving in perfect sync
                    const delay = 3500 + (Math.random() * 1000); 
                    
                    const interval = setInterval(() => {
-                       // Pause if active (details shown) or user is hovering
+                       // Pause if active (details shown) or user is hovering (handled by logic below mostly, but good check)
                        if (card.classList.contains('active') || card.matches(':hover')) return;
+
+                       // Don't auto-scroll if user is currently interacting (dragging)
+                       // Re-declare isDown check here using closure or scope if needed, 
+                       // but strictly speaking we defined 'isDown' later in the function.
+                       // Ideally we scope it properly. 
+                       // Let's rely on the fact the user isn't hovering? 
+                       // If hovering, we return. Dragging implies hovering. So this check is covered by `card.matches(':hover')`.
+                       // Wait, if I drag, I am hovering. 
+                       // So checking :hover is sufficient to pause auto-scroll during drag.
 
                        const width = carousel.clientWidth;
                        const currentScroll = carousel.scrollLeft;
@@ -186,6 +245,66 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
                    }, delay);
 
                    carouselIntervals.push(interval);
+
+                   // --- Drag to Scroll & Click Prevention Logic ---
+                   let isDown = false;
+                   let startX;
+                   let scrollLeft;
+                   let isDragging = false;
+
+                   carouselContainer.addEventListener('mousedown', (e) => {
+                       // Ignore if click is on buttons
+                       if (e.target.closest('button')) return; 
+
+                       isDown = true;
+                       isDragging = false; // Reset drag status
+                       // Get X position relative to the slider
+                       startX = e.pageX - carouselContainer.offsetLeft;
+                       scrollLeft = carousel.scrollLeft;
+                       carousel.style.cursor = 'grabbing';
+                   });
+
+                   carouselContainer.addEventListener('mouseleave', () => {
+                       isDown = false;
+                       carousel.style.cursor = 'grab';
+                   });
+
+                   carouselContainer.addEventListener('mouseup', () => {
+                       isDown = false;
+                       carousel.style.cursor = 'grab';
+                   });
+
+                   carouselContainer.addEventListener('mousemove', (e) => {
+                       if (!isDown) return;
+                       e.preventDefault(); // Prevent text selection etc
+                       
+                       const x = e.pageX - carouselContainer.offsetLeft;
+                       const walk = (x - startX) * 2; // Scroll-fast multiplier
+                       
+                       // Detect legitimate drag (ignore micro-movements)
+                       if (Math.abs(walk) > 5) {
+                           isDragging = true;
+                       }
+
+                       carousel.scrollLeft = scrollLeft - walk;
+                   });
+
+                   // Stop the parent 'click' event if we were dragging
+                   // The carouselContainer is inside the card.
+                   // Events bubble: carouselContainer -> card
+                   // So we catch it here first.
+                   carouselContainer.addEventListener('click', (e) => {
+                       if (isDragging) {
+                           // It was a drag, not a click!
+                           e.stopPropagation();
+                           e.preventDefault();
+                           // Reset flag
+                           isDragging = false; 
+                       }
+                   });
+                   
+                   // Initial Cursor
+                   carousel.style.cursor = 'grab';
                 }
             });
         }
@@ -240,3 +359,22 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
   <!-- Floating UI -->
   <FloatingSocial />
 </BaseLayout>
+
+<style>
+    /* Navigation Arrows: Visibility Logic */
+    /* Default: Visible (for touch devices/iPad) assuming they meet the 'md' breakpoint */
+    .nav-arrow {
+        opacity: 1;
+    }
+
+    /* For devices that support hover (Desktop): Hide by default, show on hover */
+    @media (hover: hover) {
+        .nav-arrow {
+            opacity: 0;
+        }
+        /* When card (group) is hovered */
+        .group:hover .nav-arrow {
+            opacity: 1;
+        }
+    }
+</style>

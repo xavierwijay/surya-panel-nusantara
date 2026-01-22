@@ -3,7 +3,7 @@ import { ASSETS, SITE } from "../../data/site";
 ---
 
 <!-- Floating Social Media Menu (Desktop and Tablet) -->
-<div class="hidden md:flex fixed bottom-6 right-6 z-50 flex-col-reverse items-center gap-3 group">
+<div class="hidden md:flex fixed bottom-6 right-6 z-50 flex-col-reverse items-center gap-3">
   <!-- Main Trigger Button -->
   <div
     class="floating-menu-trigger w-14 h-14 bg-spn-gold rounded-full shadow-2xl flex items-center justify-center text-white cursor-pointer hover:bg-white hover:text-spn-gold transition-colors duration-300 z-50 active:ring-2 active:ring-offset-2 active:ring-spn-gold"
@@ -11,13 +11,13 @@ import { ASSETS, SITE } from "../../data/site";
     role="button"
     tabindex="0"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 group-hover:rotate-12 transition-transform duration-300 floating-menu-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 transition-transform duration-300 floating-menu-icon">
       <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3.75h9m-9 3.75h9m-9 3.75h9" />
     </svg>
   </div>
 
   <!-- Drop Up Menu Items -->
-  <div class="floating-menu-items flex flex-col gap-3 items-center mb-2 opacity-0 translate-y-10 scale-0 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300 origin-bottom pointer-events-none group-hover:pointer-events-auto">
+  <div class="floating-menu-items flex flex-col gap-3 items-center mb-2 opacity-0 translate-y-10 scale-0 transition-all duration-300 origin-bottom pointer-events-none">
     <a href={SITE.whatsappUrl} target="_blank" rel="noopener" class="w-12 h-12 bg-[#25D366] rounded-full shadow-lg flex items-center justify-center text-white hover:scale-110 transition-transform relative group/item">
       <span class="absolute right-14 bg-white text-spn-dark px-3 py-1 rounded-lg text-xs font-bold opacity-0 group-hover/item:opacity-100 transition-opacity whitespace-nowrap shadow-md">WhatsApp</span>
       <img src={ASSETS.social.whatsapp} alt="WhatsApp" class="w-6 h-6 filter brightness-0 invert" />
@@ -36,7 +36,7 @@ import { ASSETS, SITE } from "../../data/site";
 </div>
 
 <script is:inline>
-  // Mobile/Tablet Click Handler for Social Menu
+  // Mobile/Tablet/Desktop Click Handler for Social Menu
   function initFloatingMenu() {
     const trigger = document.querySelector('.floating-menu-trigger');
     const menuItems = document.querySelector('.floating-menu-items');
@@ -44,20 +44,33 @@ import { ASSETS, SITE } from "../../data/site";
     
     if (!trigger || !menuItems || !menuIcon) return;
     
+    // Explicitly manage state
     let isOpen = false;
+
+    // Helper to apply state
+    const setMenuState = (open) => {
+        isOpen = open;
+        if (isOpen) {
+            menuItems.classList.remove('opacity-0', 'translate-y-10', 'scale-0', 'pointer-events-none');
+            menuItems.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto');
+            menuIcon.classList.add('rotate-12');
+        } else {
+            menuItems.classList.add('opacity-0', 'translate-y-10', 'scale-0', 'pointer-events-none');
+            menuItems.classList.remove('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto');
+            menuIcon.classList.remove('rotate-12');
+        }
+    };
 
     // Toggle menu on trigger click
     trigger.addEventListener('click', function(e) {
       e.stopPropagation();
-      isOpen = !isOpen;
-      updateMenuState();
+      setMenuState(!isOpen);
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
       if (isOpen && !trigger.contains(e.target) && !menuItems.contains(e.target)) {
-        isOpen = false;
-        updateMenuState();
+        setMenuState(false);
       }
     });
 
@@ -65,39 +78,13 @@ import { ASSETS, SITE } from "../../data/site";
     const links = menuItems.querySelectorAll('a');
     links.forEach(function(link) {
       link.addEventListener('click', function() {
-        isOpen = false;
-        updateMenuState();
+        setMenuState(false);
       });
     });
-
-    function updateMenuState() {
-      if (isOpen) {
-        // Open menu
-        menuItems.classList.remove('opacity-0');
-        menuItems.classList.remove('translate-y-10');
-        menuItems.classList.remove('scale-0');
-        menuItems.classList.remove('pointer-events-none');
-        menuItems.classList.add('opacity-100');
-        menuItems.classList.add('translate-y-0');
-        menuItems.classList.add('scale-100');
-        menuItems.classList.add('pointer-events-auto');
-        menuIcon.classList.add('rotate-12');
-      } else {
-        // Close menu
-        menuItems.classList.add('opacity-0');
-        menuItems.classList.add('translate-y-10');
-        menuItems.classList.add('scale-0');
-        menuItems.classList.add('pointer-events-none');
-        menuItems.classList.remove('opacity-100');
-        menuItems.classList.remove('translate-y-0');
-        menuItems.classList.remove('scale-100');
-        menuItems.classList.remove('pointer-events-auto');
-        menuIcon.classList.remove('rotate-12');
-      }
-    }
   }
 
-  // Wait for DOM to be ready
+  // Support Astro View Transitions and initial load
+  document.addEventListener('astro:page-load', initFloatingMenu);
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initFloatingMenu);
   } else {
