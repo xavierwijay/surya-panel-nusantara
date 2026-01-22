@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
 
-import intfarm1 from '../assets/projects/intergrated-farm/intfarm-1.jpg';
+import intfarm1 from '../assets/projects/intergrated-farm/intfarm-1.jpeg';
 import intfarm2 from '../assets/projects/intergrated-farm/intfarm-2.jpg';
 import intfarm3 from '../assets/projects/intergrated-farm/intfarm-3.jpg';
 
@@ -24,7 +24,7 @@ export interface Project {
   capacity?: string;
   year?: string;
   type?: string;
-  objectPosition?: string; // e.g. 'top', 'center', 'bottom'
+  imageClass?: string; // Custom tailwind classes for the image (e.g. object position)
 }
 
 export const PROJECTS: Project[] = [
@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     capacity: "Hybrid System",
     year: "2024",
     type: "Agricultural Solar",
-    objectPosition: "top",
+    imageClass: "object-top md:object-center",
   },
   {
     title: "PT ZIYAD",
