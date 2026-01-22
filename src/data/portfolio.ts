@@ -24,6 +24,7 @@ export interface Project {
   capacity?: string;
   year?: string;
   type?: string;
+  objectPosition?: string; // e.g. 'top', 'center', 'bottom'
 }
 
 export const PROJECTS: Project[] = [
@@ -36,6 +37,7 @@ export const PROJECTS: Project[] = [
     capacity: "Hybrid System",
     year: "2024",
     type: "Agricultural Solar",
+    objectPosition: "top",
   },
   {
     title: "PT ZIYAD",
