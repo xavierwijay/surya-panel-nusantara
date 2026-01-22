@@ -1,8 +1,25 @@
+import type { ImageMetadata } from 'astro';
+
+import intfarm1 from '../assets/projects/intergrated-farm/intfarm-1.JPG';
+import intfarm2 from '../assets/projects/intergrated-farm/intfarm-2.jpg';
+import intfarm3 from '../assets/projects/intergrated-farm/intfarm-3.jpg';
+
+import pjuts1 from '../assets/projects/pjuts/pjuts-1.jpg';
+import pjuts2 from '../assets/projects/pjuts/pjuts-2.jpg';
+
+import ziyad1 from '../assets/projects/pt-ziyad/ziyad-1.jpg';
+import ziyad2 from '../assets/projects/pt-ziyad/ziyad-2.jpg';
+import ziyad3 from '../assets/projects/pt-ziyad/ziyad-3.jpg';
+
+import resto1 from '../assets/projects/resto-aperto/resto-1.JPG';
+import resto2 from '../assets/projects/resto-aperto/resto-2.jpg';
+import resto3 from '../assets/projects/resto-aperto/resto-3.jpg';
+
 export interface Project {
   title: string;
   location: string;
-  image: string;
-  images?: string[];
+  image: ImageMetadata;
+  images?: ImageMetadata[];
   description?: string;
   capacity?: string;
   year?: string;
@@ -11,65 +28,43 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    title: "COLOMADU",
+    title: "INTEGRATED FARM",
     location: "JAWA TENGAH",
-    image:
-      "https://images.unsplash.com/photo-1624397640148-949b1732bb0a?q=80&w=2000&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1624397640148-949b1732bb0a?q=80&w=2000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594818379496-da1e345b0ded?q=80&w=2000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1548337138-e87d889cc369?q=80&w=2000&auto=format&fit=crop",
-    ],
-    description:
-      "Instalasi panel surya di area persawahan dan perumahan hijau Colomadu.",
-    capacity: "50 kWp",
-    year: "2023",
-    type: "Residential Hybrid",
-  },
-  {
-    title: "GUNUNG KIDUL",
-    location: "DIY",
-    image:
-      "https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?q=80&w=2000&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?q=80&w=2000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1664195196928-837fe1a0a521?q=80&w=2000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop",
-    ],
-    description:
-      "Pembangkit listrik tenaga surya atap industri di kawasan Gunung Kidul.",
-    capacity: "1.2 MWp",
+    image: intfarm1,
+    images: [intfarm1, intfarm2, intfarm3],
+    description: "Sistem irigasi dan kelistrikan tenaga surya untuk pertanian terpadu (Integrated Farming).",
+    capacity: "Hybrid System",
     year: "2024",
-    type: "Industrial On-Grid",
+    type: "Agricultural Solar",
   },
   {
-    title: "EDU PARK",
-    location: "UMS",
-    image:
-      "https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=2000&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=2000&auto=format&fit=crop",
-      "https://plus.unsplash.com/premium_photo-1679917152960-b9e6456ba12f?q=80&w=2000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1626079084725-70a2559a4b3f?q=80&w=2000&auto=format&fit=crop",
-    ],
-    description: "Sistem panel surya edukasi yang terintegrasi di kampus UMS.",
-    capacity: "200 kWp",
-    year: "2022",
-    type: "Educational Facility",
-  },
-  {
-    title: "SOLO BARU",
-    location: "JAWA TENGAH",
-    image:
-      "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605980413988-9ff24c537d33?q=80&w=2000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2000&auto=format&fit=crop",
-    ],
-    description: "Sistem panel surya residensial.",
-    capacity: "10 kWp",
+    title: "PT ZIYAD",
+    location: "SOLO",
+    image: ziyad1,
+    images: [ziyad1, ziyad2, ziyad3],
+    description: "Instalasi PLTS atap untuk efisiensi energi operasional kantor dan percetakan PT Ziyad.",
+    capacity: "Commercial On-Grid",
     year: "2023",
-    type: "Residential On-Grid",
+    type: "Commercial",
+  },
+  {
+    title: "RESTO APERTO",
+    location: "YOGYAKARTA",
+    image: resto1,
+    images: [resto1, resto2, resto3],
+    description: "Penerapan energi hijau untuk kebutuhan operasional restoran modern.",
+    capacity: "Hybrid Backup",
+    year: "2024",
+    type: "Commercial",
+  },
+  {
+    title: "PJUTS AREA",
+    location: "VARIOUS",
+    image: pjuts1,
+    images: [pjuts1, pjuts2],
+    description: "Penerangan Jalan Umum Tenaga Surya untuk area akses publik dan kawasan industri.",
+    capacity: "Stand-alone",
+    year: "2023",
+    type: "Public infrastructure",
   },
 ];

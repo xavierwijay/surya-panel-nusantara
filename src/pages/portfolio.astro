@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BrandLogo from "../components/header/BrandLogo.astro";
 import DesktopNavbar from "../components/header/DesktopNavbar.astro";
@@ -44,11 +45,13 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
                 <div class="flex overflow-x-auto snap-x snap-mandatory h-full w-full scrollbar-hide bg-gray-900" style="scrollbar-width: none; -ms-overflow-style: none;">
                     {(project.images || [project.image]).map((img, imgIndex) => (
                         <div class="w-full h-full flex-shrink-0 snap-center relative">
-                            <img 
+                            <Image 
                                 src={img} 
                                 alt={`${project.title} - Image ${imgIndex + 1}`}
                                 class="w-full h-full object-cover"
                                 draggable="false"
+                                width={1200}
+                                quality={80}
                             />
                         </div>
                     ))}
