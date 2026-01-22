@@ -34,28 +34,46 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
     <div class="max-w-6xl mx-auto px-6 flex flex-col gap-12 pb-12">
       {PROJECTS.map((project, index) => (
         <div 
-          class="relative group w-full h-[300px] md:h-[500px] overflow-hidden rounded-sm shadow-xl cursor-pointer isolate" 
+          class="project-card relative group w-full h-[300px] md:h-[500px] overflow-hidden rounded-sm shadow-xl cursor-pointer isolate" 
           data-aos="fade-up" 
           data-aos-delay={index * 100}
           tabindex="0"
         >
-            <!-- Image -->
-            <img 
-                src={project.image} 
-                alt={`${project.title} - ${project.location}`}
-                class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:blur-sm group-focus:scale-110 group-focus:blur-sm"
-            />
+            <!-- Carousel Container -->
+            <div class="carousel-container absolute inset-0 w-full h-full">
+                <div class="flex overflow-x-auto snap-x snap-mandatory h-full w-full scrollbar-hide bg-gray-900" style="scrollbar-width: none; -ms-overflow-style: none;">
+                    {(project.images || [project.image]).map((img, imgIndex) => (
+                        <div class="w-full h-full flex-shrink-0 snap-center relative">
+                            <img 
+                                src={img} 
+                                alt={`${project.title} - Image ${imgIndex + 1}`}
+                                class="w-full h-full object-cover"
+                                draggable="false"
+                            />
+                        </div>
+                    ))}
+                </div>
+                
+                <!-- Carousel Indicators (Dots) -->
+                {(project.images && project.images.length > 1) && (
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20 pointer-events-none transition-opacity duration-300 group-[.active]:opacity-0">
+                        {project.images.map((_, i) => (
+                            <div class={`w-1.5 h-1.5 rounded-full bg-white/50 backdrop-blur-sm shadow-sm carousel-dot-${index}-${i}`}></div>
+                        ))}
+                    </div>
+                )}
+            </div>
             
             <!-- Default Overlay (Title) -->
-            <div class="absolute inset-0 bg-black/20 group-hover:opacity-0 group-focus:opacity-0 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+            <div class="absolute inset-0 bg-black/20 group-[.active]:opacity-0 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                  <h3 class="text-2xl md:text-5xl font-bold text-white uppercase tracking-wider drop-shadow-xl text-center px-4 font-display">
                     {project.title} - {project.location}
                 </h3>
             </div>
 
-            <!-- Detail Overlay (Hover/Focus) -->
-            <div class="absolute inset-0 bg-spn-dark/80 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center px-4 md:px-8 z-10">
-                 <div class="transform translate-y-8 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 delay-75">
+            <!-- Detail Overlay (Active Only) -->
+            <div class="absolute inset-0 bg-spn-dark/80 opacity-0 group-[.active]:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center px-4 md:px-8 z-10 pointer-events-none group-[.active]:pointer-events-auto">
+                 <div class="transform translate-y-8 group-[.active]:translate-y-0 transition-transform duration-500 delay-75">
                     <span class="text-spn-gold text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-1 md:mb-4 block">Detail Proyek</span>
                     <h3 class="text-2xl md:text-5xl font-bold text-white uppercase tracking-wide font-display mb-1 md:mb-2">
                         {project.title}
@@ -63,9 +81,9 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
                     <p class="text-spn-rust font-bold text-base md:text-lg mb-2 md:mb-6">{project.location}</p>
                  </div>
                  
-                 <div class="w-16 h-1 bg-spn-gold mb-3 md:mb-8 transform scale-x-0 group-hover:scale-x-100 group-focus:scale-x-100 transition-transform duration-500 delay-150"></div>
+                 <div class="w-16 h-1 bg-spn-gold mb-3 md:mb-8 transform scale-x-0 group-[.active]:scale-x-100 transition-transform duration-500 delay-150"></div>
 
-                 <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 md:gap-x-8 gap-y-2 md:gap-y-4 text-left max-w-2xl transform translate-y-8 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 delay-200">
+                 <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 md:gap-x-8 gap-y-2 md:gap-y-4 text-left max-w-2xl transform translate-y-8 group-[.active]:translate-y-0 transition-transform duration-500 delay-200">
                     <div>
                         <p class="text-gray-400 text-[10px] md:text-xs uppercase tracking-wider mb-1">Tipe</p>
                         <p class="text-white text-sm md:text-base font-medium">{project.type || "Solar Installation"}</p>
@@ -80,13 +98,113 @@ const description = "Lihat proyek unggulan kami di seluruh Indonesia. Instalasi 
                     </div>
                  </div>
                  
-                 <p class="mt-3 md:mt-8 text-gray-300 max-w-lg leading-relaxed text-xs md:text-base transform translate-y-8 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 delay-300 line-clamp-3 md:line-clamp-none">
+                 <p class="mt-3 md:mt-8 text-gray-300 max-w-lg leading-relaxed text-xs md:text-base transform translate-y-8 group-[.active]:translate-y-0 transition-transform duration-500 delay-300 line-clamp-3 md:line-clamp-none">
                     {project.description}
                  </p>
             </div>
         </div>
       ))}
     </div>
+
+    <script is:inline>
+
+        let carouselIntervals = [];
+
+        // Use inline script to handle interactivity directly
+        document.addEventListener('astro:page-load', () => {
+            setupCards();
+        });
+        
+        // Also run on initial load if not using view transitions or for fallback
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupCards);
+        } else {
+            // Check if we are already running to avoid double setup if specific events fire rapidly
+            // But simple call is usually fine with cleanup.
+            setupCards();
+        }
+
+        function setupCards() {
+            // Cleanup existing intervals
+            carouselIntervals.forEach(clearInterval);
+            carouselIntervals = [];
+
+            const cards = document.querySelectorAll('.project-card');
+            
+            cards.forEach((card, index) => {
+                // Click interaction
+                card.addEventListener('click', (e) => {
+                    // Check if click was a swipe (drag interaction) in carousel
+                    // Simple heuristic: if we are scrolling, don't toggle. 
+                    // But 'click' event usually fires only on clean release.
+                    
+                    // Toggle 'active' class
+                    const wasActive = card.classList.contains('active');
+                    
+                    // Close all others
+                    cards.forEach(c => c.classList.remove('active'));
+                    
+                    if (!wasActive) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+
+                // Carousel Logic
+                const carousel = card.querySelector('.overflow-x-auto');
+                if (carousel) {
+                   // Scroll spy for dots
+                   carousel.addEventListener('scroll', () => {
+                       const index = Math.round(carousel.scrollLeft / carousel.clientWidth);
+                       // Update dots logic could go here if we want dynamic active dots
+                   });
+
+                   // Auto-scroll
+                   // Randomize start delay slightly to avoid all moving in perfect sync
+                   const delay = 3500 + (Math.random() * 1000); 
+                   
+                   const interval = setInterval(() => {
+                       // Pause if active (details shown) or user is hovering
+                       if (card.classList.contains('active') || card.matches(':hover')) return;
+
+                       const width = carousel.clientWidth;
+                       const currentScroll = carousel.scrollLeft;
+                       const maxScroll = carousel.scrollWidth - width;
+
+                       let nextScroll = currentScroll + width;
+                       
+                       // Loop back to start if we are at the end (with small tolerance)
+                       if (currentScroll >= maxScroll - 10) {
+                           nextScroll = 0;
+                       }
+
+                       carousel.scrollTo({
+                           left: nextScroll,
+                           behavior: 'smooth'
+                       });
+                   }, delay);
+
+                   carouselIntervals.push(interval);
+                }
+            });
+        }
+    </script>
+    
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+    
+
 
     <!-- CTA Section -->
     <section class="pb-12 px-6 text-center" data-aos="fade-up">
