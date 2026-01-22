@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
 
-import intfarm1 from '../assets/projects/intergrated-farm/intfarm-1.JPG';
+import intfarm1 from '../assets/projects/intergrated-farm/intfarm-1.jpg';
 import intfarm2 from '../assets/projects/intergrated-farm/intfarm-2.jpg';
 import intfarm3 from '../assets/projects/intergrated-farm/intfarm-3.jpg';
 
@@ -11,7 +11,7 @@ import ziyad1 from '../assets/projects/pt-ziyad/ziyad-1.jpg';
 import ziyad2 from '../assets/projects/pt-ziyad/ziyad-2.jpg';
 import ziyad3 from '../assets/projects/pt-ziyad/ziyad-3.jpg';
 
-import resto1 from '../assets/projects/resto-aperto/resto-1.JPG';
+import resto1 from '../assets/projects/resto-aperto/resto-1.jpg';
 import resto2 from '../assets/projects/resto-aperto/resto-2.jpg';
 import resto3 from '../assets/projects/resto-aperto/resto-3.jpg';
 
