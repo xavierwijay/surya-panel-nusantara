@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
   {
     title: "PT ZIYAD",
     location: "SOLO",
-    image: ziyad1,
+    image: ziyad2,
     images: [ziyad1, ziyad2, ziyad3],
     description: "Instalasi PLTS atap untuk efisiensi energi operasional kantor dan percetakan PT Ziyad.",
     capacity: "Commercial On-Grid",

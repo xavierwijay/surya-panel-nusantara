@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.panelsuryasolo.com/sitemap-index.xml

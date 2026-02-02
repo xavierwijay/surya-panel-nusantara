@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://suryapanelnusantara.com", // Ganti dengan domain asli Anda saat deploy
+  site: "https://www.panelsuryasolo.com", // Domain produksi
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

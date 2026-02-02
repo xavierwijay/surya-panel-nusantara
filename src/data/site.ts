@@ -27,7 +27,7 @@ export const NAV_LINKS = [
 export const ASSETS = {
   logoWide: "/logosuryanusantara.png",
   logoPortrait: "/LOGOSURYANUSANTARAPOTRAIT.png",
-  favicon: "/favicon.svg",
+  favicon: "/logo-tab.png",
   social: {
     instagram: "/iconsocmed/instagram.png",
     tiktok: "/iconsocmed/tiktok.png",
