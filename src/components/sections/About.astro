@@ -1,11 +1,16 @@
+---
+import { Image } from "astro:assets";
+import resto1 from "../../assets/projects/resto-aperto/resto-1.jpg";
+---
+
 <section id="about" class="py-24 bg-spn-cream px-6 md:px-12">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
     <div class="relative" data-aos="fade-up">
       <div class="absolute -top-4 -left-4 w-full h-full border-2 border-spn-gold rounded-sm z-0"></div>
-      <img
-        src="https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?q=80&w=2070&auto=format&fit=crop"
+      <Image
+        src={resto1}
         alt="Solar Installation"
-        class="relative z-10 w-full h-auto shadow-xl rounded-sm grayscale hover:grayscale-0 transition-all duration-700"
+        class="relative z-10 w-full h-auto shadow-xl rounded-sm transition-all duration-700"
       />
     </div>
 
@@ -18,7 +23,7 @@
       <p class="text-lg leading-relaxed mb-8 opacity-80">
         Dengan teknologi canggih dan tim ahli, kami memastikan setiap instalasi efisien, tahan lama, dan rapi.
       </p>
-      <a href="/company-profile" class="text-spn-rust font-bold uppercase tracking-wider border-b-2 border-spn-rust hover:text-spn-gold hover:border-spn-gold transition-colors pb-1" style="font-family: 'Impact'; font-weight: 900;">
+      <a href="/company-profile" class="text-spn-rust uppercase tracking-wider border-b-2 border-spn-rust hover:text-spn-gold hover:border-spn-gold transition-colors pb-1" style="font-family: 'Impact';">
         Profil Perusahaan Surya Nusantara &rarr;
       </a>
     </div>
