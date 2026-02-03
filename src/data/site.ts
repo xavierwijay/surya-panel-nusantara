@@ -4,13 +4,13 @@ export const SITE = {
   description:
     "Surya Panel Nusantara menyediakan solusi energi surya untuk rumah dan bisnis. Instalasi profesional, efisien, dan berkualitas.",
   lang: "id",
-  phoneDisplay: "+62 812 3456 7890",
+  phoneDisplay: "+62 821-3572-0009",
   email: "hello@suryapanelnusantara.com",
   address: "Jl. Porong No.17, Pucangsawit, Kec. Jebres, Kota Surakarta, Jawa Tengah 57125",
   whatsappUrl:
-    "https://wa.me/6282157582002?text=Halo%20Surya%20Panel%20Nusantara%2C%20saya%20ingin%20berkonsultasi%20mengenai%20pemasangan%20panel%20surya.%20Mohon%20informasi%20lebih%20lanjut.",
+    "https://wa.me/6282135720009?text=Halo%20Surya%20Panel%20Nusantara%2C%20saya%20ingin%20berkonsultasi%20mengenai%20pemasangan%20panel%20surya.%20Mohon%20informasi%20lebih%20lanjut.",
   instagramUrl: "https://www.instagram.com/surya__nusantara/",
-  tiktokUrl: "#",
+  tiktokUrl: "https://www.tiktok.com/@panel.surya.solo?_r=1&_t=ZS-93beqAxBUxj",
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15819.74239857962!2d110.822606!3d-7.567086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a16627681c951%3A0x4027a76e352f500!2sSolo%2C%20Surakarta%20City%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid",
 };
