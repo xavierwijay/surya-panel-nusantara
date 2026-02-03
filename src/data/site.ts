@@ -5,7 +5,7 @@ export const SITE = {
     "Surya Panel Nusantara menyediakan solusi energi surya untuk rumah dan bisnis. Instalasi profesional, efisien, dan berkualitas.",
   lang: "id",
   phoneDisplay: "+62 821-3572-0009",
-  email: "hello@suryapanelnusantara.com",
+  email: "suryanusantara02@gmail.com",
   address: "Jl. Porong No.17, Pucangsawit, Kec. Jebres, Kota Surakarta, Jawa Tengah 57125",
   whatsappUrl:
     "https://wa.me/6282135720009?text=Halo%20Surya%20Panel%20Nusantara%2C%20saya%20ingin%20berkonsultasi%20mengenai%20pemasangan%20panel%20surya.%20Mohon%20informasi%20lebih%20lanjut.",
