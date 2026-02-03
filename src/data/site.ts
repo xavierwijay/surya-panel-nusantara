@@ -6,7 +6,7 @@ export const SITE = {
   lang: "id",
   phoneDisplay: "+62 812 3456 7890",
   email: "hello@suryapanelnusantara.com",
-  address: "Jl. Surya Kencana No. 88, Solo, Jawa Tengah, Indonesia",
+  address: "Jl. Porong No.17, Pucangsawit, Kec. Jebres, Kota Surakarta, Jawa Tengah 57125",
   whatsappUrl:
     "https://wa.me/6282157582002?text=Halo%20Surya%20Panel%20Nusantara%2C%20saya%20ingin%20berkonsultasi%20mengenai%20pemasangan%20panel%20surya.%20Mohon%20informasi%20lebih%20lanjut.",
   instagramUrl: "https://www.instagram.com/surya__nusantara/",
